@@ -18,6 +18,12 @@ Kustomize: #Kustomize & {
 		Resources: "github.com/argoproj/argo-cd//manifests/cluster-install?ref=v2.13.1": _
 		Kustomization: patches: [for x in KustomizePatches {x}]
 	}
+
+	Resources: Namespace: "namespace": {
+		metadata: {
+			name: "argocd"
+		}
+	}
 }
 
 // == Patches ==

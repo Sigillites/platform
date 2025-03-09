@@ -20,7 +20,7 @@ Helm: #Helm & {
 		}
 	}
 
-  Resources: Namespace: "namespace": {
+	Resources: Namespace: "namespace": {
 		metadata: {
 			name: Helm.Namespace
 		}
