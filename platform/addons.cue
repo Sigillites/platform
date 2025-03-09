@@ -33,10 +33,10 @@ Addons: {
 		}
 	}
 
-	//"kubelet-serving-cert-approver": {
-	//  path: "addons/kubelet-serving-cert-approver"
-	//  parameters: #KubletServingCertApproverParameters
-	//}
+	"kubelet-serving-cert-approver": {
+		path:       "addons/kubelet-serving-cert-approver"
+		parameters: #KubletServingCertApproverParameters
+	}
 }
 
 // === Render ===

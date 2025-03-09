@@ -11,3 +11,10 @@ spec:
         path: deploy/cloud_controller/hetzner/addons/components/cert-manager
         repoURL: https://github.com/Sigillites/platform.git
         targetRevision: main
+    syncPolicy:
+        automated:
+            prune: true
+            selfHeal: true
+        syncOptions:
+            - CreateNamespace=true
+            - ApplyOutOfSyncOnly=true

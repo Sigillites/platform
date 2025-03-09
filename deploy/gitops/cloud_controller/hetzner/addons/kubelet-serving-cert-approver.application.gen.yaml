@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-    name: argocd
+    name: kubelet-serving-cert-approver
     namespace: argocd
 spec:
     destination:
         server: https://kubernetes.default.svc
     project: default
     source:
-        path: deploy/cloud_controller/hetzner/deployments/components/argocd
+        path: deploy/cloud_controller/hetzner/addons/components/kubelet-serving-cert-approver
         repoURL: https://github.com/Sigillites/platform.git
         targetRevision: main
     syncPolicy:

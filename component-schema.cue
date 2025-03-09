@@ -36,8 +36,11 @@ params: #Parameters & _Tags.params
 			kind:   "Resources"
 			output: artifact
 			resources: Application: (Name): app.#Application & {
-				metadata: name:      Name
-				metadata: namespace: "argocd"
+				metadata: {
+					name:      Name
+					namespace: "argocd"
+					//finalizers: "resources-finalizer.argocd.argoproj.io"
+				}
 				spec: {
 					destination: server: Server
 					project: "default"
@@ -45,6 +48,16 @@ params: #Parameters & _Tags.params
 						path:           ResourcesPath
 						repoURL:        "https://github.com/Sigillites/platform.git"
 						targetRevision: "main"
+					}
+					syncPolicy: {
+						automated: {
+							prune:    true
+							selfHeal: true
+						}
+						syncOptions: [
+							"CreateNamespace=true",
+							"ApplyOutOfSyncOnly=true",
+						]
 					}
 				}
 			}
