@@ -23,7 +23,7 @@ Helm: #Helm & {
 
 // === Talos ===
 
-if params.cluster.os == "talos" {
+if params.os == "talos" {
 	Helm: Values: {
 		k8sServiceHost: "localhost"
 		k8sServicePort: 7445
@@ -53,7 +53,7 @@ if params.cluster.os == "talos" {
 			hostRoot: "/sys/fs/cgroup"
 			autoMount: enabled: false
 		}
-	}
+	} //!TODO this need to scream if the param does not exist
 }
 
 // === Meshed ===

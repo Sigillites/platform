@@ -55,7 +55,6 @@ params: #Parameters & _Tags.params
 							selfHeal: true
 						}
 						syncOptions: [
-							"CreateNamespace=true",
 							"ApplyOutOfSyncOnly=true",
 						]
 					}

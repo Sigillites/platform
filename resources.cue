@@ -12,6 +12,7 @@ import (
 	hrv1 "gateway.networking.k8s.io/httproute/v1"
 	gwv1 "gateway.networking.k8s.io/gateway/v1"
 	ap "argoproj.io/appproject/v1alpha1"
+	app "argoproj.io/application/v1alpha1"
 	es "external-secrets.io/externalsecret/v1beta1"
 	ss "external-secrets.io/secretstore/v1beta1"
 )
@@ -23,6 +24,7 @@ import (
 	}
 
 	AppProject?: [_]:         ap.#AppProject
+	Application?: [_]:        app.#Application
 	Certificate?: [_]:        certv1.#Certificate
 	ClusterIssuer?: [_]:      ci.#ClusterIssuer
 	ClusterRole?: [_]:        rbacv1.#ClusterRole

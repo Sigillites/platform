@@ -14,18 +14,48 @@ params: #ArgoCDParameters
 holos: Kustomize.BuildPlan
 
 Kustomize: #Kustomize & {
-  Namespace: "argocd"
-
 	KustomizeConfig: {
-		Resources: "github.com/argoproj/argo-cd//manifests/cluster-install?ref=v2.13.1": _
-		Kustomization: patches: [for x in KustomizePatches {x}]
-	}
-
-	Resources: Namespace: "namespace": {
-		metadata: {
-			name: "argocd"
+		Resources: "github.com/argoproj/argo-cd//manifests/cluster-install?ref=v2.14.4": _
+		Kustomization: {
+			namespace: "argocd"
+			patches: [for x in KustomizePatches {x}]
 		}
 	}
+
+	Resources: {
+		Namespace: "namespace": {
+			metadata: {
+				name: "argocd"
+			}
+		}
+
+		Application: "bootstrap": {
+			metadata: {
+				name:      "bootstrap"
+				namespace: "argocd"
+				//finalizers: "resources-finalizer.argocd.argoproj.io"
+			}
+			spec: {
+				destination: server: "https://kubernetes.default.svc"
+				project: "default"
+				source: {
+					path:           "deploy/gitops"
+					repoURL:        "https://github.com/Sigillites/platform.git"
+					targetRevision: "main"
+					directory: recurse: true
+				}
+				syncPolicy: {
+					automated: {
+						prune:    true
+						selfHeal: true
+					}
+					syncOptions: [
+						"ApplyOutOfSyncOnly=true",
+					]
+				}
+			}
+		}
+  }
 }
 
 // == Patches ==
@@ -41,13 +71,13 @@ let KustomizePatches = #KustomizePatches & {
 		}
 		data: {
 			"resource.exclusions": """
-        - apiGroups:
-          - cilium.io
-          kinds:
-          - CiliumIdentity
-          clusters:
-          - '*'
-        """
+				- apiGroups:
+				  - cilium.io
+				  kinds:
+				  - CiliumIdentity
+				  clusters:
+				  - '*'
+				"""
 		}
 	})
 
