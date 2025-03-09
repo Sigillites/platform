@@ -15,12 +15,12 @@ for deploymentName, rawDeployment in ControllerDeployments {
 		_clusterParameters: Fleets."cloud_controller".clusters.parameters
 	}
 	Platform: Components: {
-		"cloud_controller.hetzner.deployments.\(deploymentName)": {
+		"cloud_controller.core.deployments.\(deploymentName)": {
 			name: deploymentName
 			path: deployment.path
 			parameters: {
 				params:          json.Marshal(deployment.parameters)
-				output_base_dir: "cloud_controller/hetzner/deployments"
+				output_base_dir: "cloud_controller/core/deployments"
 			}
 		}
 	}

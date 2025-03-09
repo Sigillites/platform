@@ -3,7 +3,7 @@ package holos
 Fleets: {
 	"cloud_controller": {
 		clusters: {
-			"hetzner": {
+			"core": {
 				parameters: {
 					data_region: "eu"
 					host:        "hetzner"

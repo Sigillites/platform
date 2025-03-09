@@ -13,7 +13,7 @@ Helm: #Helm & {
 
 	Chart: {
 		name:    "cilium"
-		version: "1.16.4"
+		version: "1.17.1"
 		repository: {
 			name: "cilium"
 			url:  "https://helm.cilium.io/"
