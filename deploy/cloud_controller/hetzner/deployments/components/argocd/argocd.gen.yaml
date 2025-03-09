@@ -22634,13 +22634,13 @@ subjects:
 ---
 apiVersion: v1
 data:
-  resource.exclusions:
-  - apiGroups:
-    - cilium.io
-    clusters:
-    - '*'
-    kinds:
-    - CiliumIdentity
+  resource.exclusions: |-
+    - apiGroups:
+      - cilium.io
+      kinds:
+      - CiliumIdentity
+      clusters:
+      - '*'
 kind: ConfigMap
 metadata:
   labels:

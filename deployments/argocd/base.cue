@@ -38,11 +38,14 @@ let KustomizePatches = #KustomizePatches & {
 			name: "argocd-cm"
 		}
 		data: {
-			"resource.exclusions": [{
-				apiGroups: ["cilium.io"]
-				kinds: ["CiliumIdentity"]
-				clusters: ["*"]
-			}]
+			"resource.exclusions": """
+        - apiGroups:
+          - cilium.io
+          kinds:
+          - CiliumIdentity
+          clusters:
+          - '*'
+        """
 		}
 	})
 
