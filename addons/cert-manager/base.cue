@@ -19,6 +19,12 @@ Helm: #Helm & {
 			url:  "https://charts.jetstack.io"
 		}
 	}
+
+  Resources: Namespace: "namespace": {
+		metadata: {
+			name: Helm.Namespace
+		}
+	}
 }
 
 // === Enable HA Mode ===
