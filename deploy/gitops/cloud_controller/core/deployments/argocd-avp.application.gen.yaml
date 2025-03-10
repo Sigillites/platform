@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+    name: argocd-avp
+    namespace: argocd
+spec:
+    destination:
+        server: https://kubernetes.default.svc
+    project: default
+    source:
+        path: deploy/cloud_controller/core/deployments/components/argocd-avp
+        repoURL: https://github.com/Sigillites/platform.git
+        targetRevision: main
+    syncPolicy:
+        automated:
+            prune: true
+            selfHeal: true
+        syncOptions:
+            - ApplyOutOfSyncOnly=true

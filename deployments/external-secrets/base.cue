@@ -21,10 +21,10 @@ Component: #Helm & {
 	}
 
 	Resources: Namespace: "namespace": {
-			metadata: {
-				name: "external-secrets"
-			}
+		metadata: {
+			name: "external-secrets"
 		}
+	}
 
 	Values: installCRDs: false
 }

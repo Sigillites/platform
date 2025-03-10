@@ -10,6 +10,11 @@ ControllerDeployments: {
 		parameters: #ArgoCDParameters
 	}
 
+	"argocd-avp": {
+		path:       "deployments/argocd-avp"
+		parameters: #ArgoCDAvpParameters
+	}
+
 	"external-secrets": {
 		path: "deployments/external-secrets"
 		parameters: #ExternalSecretsParameters & {

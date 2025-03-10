@@ -2,6 +2,8 @@ package holos
 
 #ArgoCDParameters: {}
 
+#ArgoCDAvpParameters: {}
+
 #ExternalSecretsParameters: {
 	version: string
 }

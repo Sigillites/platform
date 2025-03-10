@@ -25038,7 +25038,7 @@ spec:
                   app.kubernetes.io/part-of: argocd
               topologyKey: kubernetes.io/hostname
             weight: 5
-      automountServiceAccountToken: false
+      automountServiceAccountToken: true
       containers:
       - args:
         - /usr/local/bin/argocd-repo-server
@@ -25292,6 +25292,26 @@ spec:
           name: helm-working-dir
         - mountPath: /home/argocd/cmp-server/plugins
           name: plugins
+      - command:
+        - /var/run/argocd/argocd-cmp-server
+        image: registry.access.redhat.com/ubi8
+        name: avp
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 999
+        volumeMounts:
+        - mountPath: /var/run/argocd
+          name: var-files
+        - mountPath: /home/argocd/cmp-server/plugins
+          name: plugins
+        - mountPath: /tmp
+          name: tmp
+        - mountPath: /home/argocd/cmp-server/config/plugin.yaml
+          name: cmp-plugin
+          subPath: avp.yaml
+        - mountPath: /usr/local/bin/argocd-vault-plugin
+          name: custom-tools
+          subPath: argocd-vault-plugin
       initContainers:
       - command:
         - /bin/cp
@@ -25312,6 +25332,21 @@ spec:
         volumeMounts:
         - mountPath: /var/run/argocd
           name: var-files
+      - args:
+        - curl -L https://github.com/argoproj-labs/argocd-vault-plugin/releases/download/v$(AVP_VERSION)/argocd-vault-plugin_$(AVP_VERSION)_linux_amd64
+          -o argocd-vault-plugin && chmod +x argocd-vault-plugin && mv argocd-vault-plugin
+          /custom-tools/
+        command:
+        - sh
+        - -c
+        env:
+        - name: AVP_VERSION
+          value: 1.16.1
+        image: registry.access.redhat.com/ubi8
+        name: download-tools
+        volumeMounts:
+        - mountPath: /custom-tools
+          name: custom-tools
       nodeSelector:
         kubernetes.io/os: linux
       serviceAccountName: argocd-repo-server
@@ -25346,6 +25381,11 @@ spec:
         name: var-files
       - emptyDir: {}
         name: plugins
+      - configMap:
+          name: cmp-plugin
+        name: cmp-plugin
+      - emptyDir: {}
+        name: custom-tools
 ---
 apiVersion: apps/v1
 kind: Deployment
