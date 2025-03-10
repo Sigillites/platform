@@ -2,10 +2,26 @@ package holos
 
 import ("encoding/json")
 
+let externalSecretsVersion = "0.14.3"
+
 ControllerDeployments: {
 	"argocd": {
 		path:       "deployments/argocd"
 		parameters: #ArgoCDParameters
+	}
+
+	"external-secrets": {
+		path: "deployments/external-secrets"
+		parameters: #ExternalSecretsParameters & {
+			version: externalSecretsVersion
+		}
+	}
+
+	"external-secrets-crds": {
+		path: "deployments/external-secrets-crds"
+		parameters: #ExternalSecretsCrdsParameters & {
+			version: externalSecretsVersion
+		}
 	}
 }
 

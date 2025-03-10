@@ -1,18 +1,19 @@
 package holos
 
 #CiliumParameters: {
+	version:     string
 	clusterName: string
 	os:          string
 	meshed:      bool
 }
 
 #CertManagerParameters: {
+	version:         string
 	highlyAvailable: bool | *false
 }
 
-#ArgoCDParameters: {}
-
 #MetricsServerParameters: {
+	version:         string
 	highlyAvailable: bool | *false
 }
 

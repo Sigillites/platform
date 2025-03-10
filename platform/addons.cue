@@ -10,6 +10,7 @@ Addons: {
 		_clusterParameters: _
 		_fleetParameters:   _
 		parameters: #CiliumParameters & {
+			version:     "1.17.1"
 			clusterName: _clusterParameters.name
 			os:          _clusterParameters.os
 			meshed:      _fleetParameters.meshed
@@ -60,6 +61,7 @@ Addons: {
 		path:             "addons/cert-manager"
 		_fleetParameters: _
 		parameters: #CertManagerParameters & {
+			version:         "1.17.1"
 			highlyAvailable: _fleetParameters.prod
 		}
 	}
@@ -68,6 +70,7 @@ Addons: {
 		path:             "addons/metrics-server"
 		_fleetParameters: _
 		parameters: #MetricsServerParameters & {
+			version:         "3.12.2"
 			highlyAvailable: _fleetParameters.prod
 		}
 	}
