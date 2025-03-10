@@ -55,7 +55,7 @@ Kustomize: #Kustomize & {
 				}
 			}
 		}
-  }
+	}
 }
 
 // == Patches ==

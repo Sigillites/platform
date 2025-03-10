@@ -17,3 +17,10 @@ package holos
 }
 
 #KubletServingCertApproverParameters: {}
+
+// === Istio === 
+#IstioBaseParameters: {}
+#IstioCniParameters: {}
+#IstioGatewayParameters: {}
+#IstioZtunnelParameters: {}
+#IstioIstiodParameters: {}

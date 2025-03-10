@@ -1,6 +1,10 @@
 package holos
 
 Fleets: {
+	parameters: {
+		meshed: false
+		prod:   true
+	}
 	"cloud_controller": {
 		clusters: {
 			"core": {

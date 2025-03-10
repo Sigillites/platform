@@ -9,7 +9,6 @@ package holos
 		data_region: "eu" | "usa" | "apac"
 		host:        "hetzner" | "aws"
 		os:          "talos"
-		cni:         "none" | "cilium"
 	}
 })
 
@@ -25,7 +24,6 @@ package holos
 })
 
 #Addon: close({
-	selector: [string]: string
 	path:       string
 	parameters: #Parameters
 })
