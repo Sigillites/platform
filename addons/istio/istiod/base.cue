@@ -18,7 +18,7 @@ Helm: #Helm & {
 
 	Chart: {
 		name:    "istiod"
-		version: "1.25.0"
+		version: params.version
 		repository: {
 			name: "istio"
 			url:  "https://istio-release.storage.googleapis.com/charts"

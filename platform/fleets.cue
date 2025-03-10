@@ -2,7 +2,7 @@ package holos
 
 Fleets: {
 	parameters: {
-		meshed: false
+		meshed: true
 		prod:   true
 	}
 	"cloud_controller": {

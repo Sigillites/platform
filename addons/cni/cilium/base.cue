@@ -58,7 +58,7 @@ if params.os == "talos" {
 
 // === Meshed ===
 
-if params.fleet.meshed {
+if params.meshed {
 	Helm: Values: {
 		cni: exclusive:              false
 		socketLB: hostNamespaceOnly: true

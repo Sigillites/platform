@@ -13,7 +13,7 @@ Helm: #Helm & {
 
 	Chart: {
 		name:    "ztunnel"
-		version: "1.25.0"
+		version: params.version
 		repository: {
 			name: "istio"
 			url:  "https://istio-release.storage.googleapis.com/charts"

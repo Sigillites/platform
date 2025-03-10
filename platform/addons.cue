@@ -2,6 +2,8 @@ package holos
 
 import ("encoding/json")
 
+let istioVersion = "1.24.3"
+
 Addons: {
 	"cilium": {
 		path:               "addons/cni/cilium"
@@ -14,43 +16,44 @@ Addons: {
 		}
 	}
 
-  "gateway-api": {
-    path: "addons/gateway-api"
-  }
+	"gateway-api": {
+		path: "addons/gateway-api"
+	}
 
 	"istio-base": {
 		path:               "addons/istio/base"
 		_clusterParameters: _
 		_fleetParameters:   _
-		parameters: #IstioBaseParameters & {}
+		parameters: #IstioBaseParameters & {
+			version: istioVersion
+		}
 	}
 
 	"istio-cni": {
 		path:               "addons/istio/cni"
 		_clusterParameters: _
 		_fleetParameters:   _
-		parameters: #IstioCniParameters & {}
-	}
-
-	"istio-gateway": {
-		path:               "addons/istio/gateway"
-		_clusterParameters: _
-		_fleetParameters:   _
-		parameters: #IstioGatewayParameters & {}
+		parameters: #IstioCniParameters & {
+			version: istioVersion
+		}
 	}
 
 	"istio-istiod": {
 		path:               "addons/istio/istiod"
 		_clusterParameters: _
 		_fleetParameters:   _
-		parameters: #IstioIstiodParameters & {}
+		parameters: #IstioIstiodParameters & {
+			version: istioVersion
+		}
 	}
 
 	"istio-ztunnel": {
 		path:               "addons/istio/ztunnel"
 		_clusterParameters: _
 		_fleetParameters:   _
-		parameters: #IstioZtunnelParameters & {}
+		parameters: #IstioZtunnelParameters & {
+			version: istioVersion
+		}
 	}
 
 	"cert-manager": {

@@ -18,10 +18,19 @@ Helm: #Helm & {
 
 	Chart: {
 		name:    "base"
-		version: "1.25.0"
+		version: params.version
 		repository: {
 			name: "istio"
 			url:  "https://istio-release.storage.googleapis.com/charts"
+		}
+	}
+
+	Resources: Namespace: "namespace": {
+		metadata: {
+			name: "istio-system"
+			labels: {
+				"pod-security.kubernetes.io/enforce": "privileged"
+			}
 		}
 	}
 
